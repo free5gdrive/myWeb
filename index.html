@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Climate Action Hub - Home</title>
+  <link rel="stylesheet" href="style.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <h1>🌍 Climate Action Hub</h1>
+    <nav>
+      <a href="education.html">Education</a>
+      <a href="community.html">Community</a>
+      <a href="resources.html">Resources</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="hero-content">
+      <h2>Together for a Greener Future</h2>
+      <p>Learn. Act. Inspire. Join the movement for climate action 🌱</p>
+    </div>
+  </div>
+
+  <section>
+    <h2>🌟 Explore the Hub</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>📘 Education</h3>
+        <p>Articles, infographics, and explainers on climate causes, effects, and solutions.</p>
+        <a href="education.html">Learn More</a>
+      </div>
+      <div class="card">
+        <h3>🌱 Community</h3>
+        <p>Share and discover local green initiatives from people around the world.</p>
+        <a href="community.html">Get Involved</a>
+      </div>
+      <div class="card">
+        <h3>📚 Resources</h3>
+        <p>Toolkits, guides, and NGO/Govt. links to take meaningful climate action.</p>
+        <a href="resources.html">Access</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🌍 Carbon Footprint Calculator</h2>
+    <div class="calculator">
+      <label for="car">Kilometers driven by car per week:</label>
+      <input type="number" id="car" placeholder="e.g. 100">
+
+      <label for="electricity">Monthly electricity use (kWh):</label>
+      <input type="number" id="electricity" placeholder="e.g. 200">
+
+      <label for="flights">Number of short flights (<3 hrs) per year:</label>
+      <input type="number" id="flights" placeholder="e.g. 2">
+
+      <label for="diet">How many days per week do you eat meat?:</label>
+      <input type="number" id="diet" placeholder="e.g. 5">
+
+      <button onclick="calculateCarbon()">Calculate My Footprint</button>
+      <div class="result" id="result"></div>
+    </div>
+  </section>
+
+  <footer>
+    🌱 Climate Action Hub | Inspiring Change | © 2025
+  </footer>
+
+  <script>
+    function calculateCarbon() {
+      let car = parseFloat(document.getElementById("car").value) || 0;
+      let electricity = parseFloat(document.getElementById("electricity").value) || 0;
+      let flights = parseFloat(document.getElementById("flights").value) || 0;
+      let diet = parseFloat(document.getElementById("diet").value) || 0;
+
+      let carCO2 = car * 0.2 * 52 / 1000; 
+      let elecCO2 = electricity * 0.92 * 12 / 1000; 
+      let flightCO2 = flights * 0.3; 
+      let dietCO2 = diet * 0.5;
+
+      let total = (carCO2 + elecCO2 + flightCO2 + dietCO2).toFixed(2);
+
+      let message = `Your estimated annual carbon footprint is ${total} tons of CO₂.`;
+      if(total < 2) {
+        message += " 🌟 Great! You're below the sustainable target.";
+      } else if(total < 5) {
+        message += " 👍 You're doing okay, but there's room to improve.";
+      } else {
+        message += " ⚠️ High impact! Try reducing flights, car use, and electricity.";
+      }
+
+      document.getElementById("result").innerText = message;
+    }
+  </script>
+
+</body>
+</html>

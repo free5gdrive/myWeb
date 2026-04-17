@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="community.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <title>Climate Action Hub - Community section</title>
+  
+</head>
+<body>
+  <header>🌱 Community Action Page</header>
+  <section>
+    <h2>Share Your Green Initiative</h2>
+    <form id="initiativeForm">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="text" id="location" placeholder="Your Location" required>
+      <textarea id="initiative" rows="4" placeholder="Describe your initiative (e.g., tree planting, recycling, solar panels)" required></textarea>
+      <button type="submit">Post Initiative</button>
+    </form>
+
+    <h2>🌍 Community Posts</h2>
+    <div id="posts"></div>
+  </section>
+
+  <script>
+    const form = document.getElementById('initiativeForm');
+    const postsContainer = document.getElementById('posts');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const location = document.getElementById('location').value;
+      const initiative = document.getElementById('initiative').value;
+
+      // Create new post
+      const post = document.createElement('div');
+      post.classList.add('post');
+      post.innerHTML = `
+        <h3>${initiative}</h3>
+        <small>👤 ${name} | 📍 ${location}</small>
+      `;
+
+      // Add post to container
+      postsContainer.prepend(post);
+
+      // Clear form
+      form.reset();
+    });
+  </script>
+</body>
+</html>
